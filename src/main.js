@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from "vue";
 // 抹平浏览器差异
 /*
 normalize.css：抹平浏览器差异
@@ -7,25 +7,26 @@ normalize.css：抹平浏览器差异
   2:导入  import 'normalize.css/normalize.css'  
 */
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import "normalize.css/normalize.css"; // A modern alternative to CSS resets
 // 引入 element-ui
 // import ElementUI from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 // import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 // 导入css
-import '@/styles/index.scss' // global css
+import "@/styles/index.scss"; // global css
 
-import App from './App'
-import store from './store'
-import router from './router'
+import App from "./App";
+import store from "./store";
+import router from "./router";
 
-import '@/icons' //  引入 icon图标
-import '@/permission' // 引入导航守卫
+import "@/icons"; //  引入 icon图标
+import "@/permission"; // 引入导航守卫
 // 引入 element-ui
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from "element-ui";
+// import "@/utils/elementUI.js";
+import "element-ui/lib/theme-chalk/index.css";
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 
 /**
  * If you don't want to use mock-server
@@ -47,11 +48,11 @@ Vue.use(ElementUI)
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
   store,
-  render: h => h(App)
-})
+  render: (h) => h(App),
+});

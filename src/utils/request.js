@@ -10,25 +10,42 @@ baseURL:process.env.VUE_APP_BASE_API
 
 */
 
-import axios from 'axios'
+import axios from "axios";
+import { Message } from "element-ui";
+
 const _axios = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API
-})
+  baseURL: process.env.VUE_APP_BASE_API,
+});
 _axios.interceptors.request.use(
-  config => {
-    return config
+  (config) => {
+    return config;
   },
-  error => {
-    return Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
   }
-)
+);
 _axios.interceptors.response.use(
-  res => {
+  (res) => {
     // 在响应拦截内只返回对应的data数据
-    return res.data
+    // console.log(res);
+    if (res.data.success) {
+      // 提示登录成功
+      Message({
+        showClose: true,
+        message: "登录成功",
+        type: "success",
+      });
+      return res.data;
+    } else {
+      Message.error({
+        showClose: true,
+        message: "密码或账号不对",
+      });
+      return Promise.reject(new Error(res.data.message || "密码或账号不对"));
+    }
   },
-  error => {
-    return Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
   }
-)
-export default _axios
+);
+export default _axios;
